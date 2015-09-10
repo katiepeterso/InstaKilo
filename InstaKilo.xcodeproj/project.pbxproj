@@ -15,6 +15,8 @@
 		AA2EE69F1BA0C3100068D910 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2EE69D1BA0C3100068D910 /* LaunchScreen.xib */; };
 		AA2EE6AB1BA0C3100068D910 /* InstaKiloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2EE6AA1BA0C3100068D910 /* InstaKiloTests.m */; };
 		AA2EE6B61BA0C6AE0068D910 /* Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2EE6B51BA0C6AE0068D910 /* Photos.m */; };
+		AA2EE6B91BA0E4F60068D910 /* InstaKiloCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2EE6B81BA0E4F60068D910 /* InstaKiloCell.m */; };
+		AA2EE6BC1BA0F95F0068D910 /* SectionHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2EE6BB1BA0F95F0068D910 /* SectionHeaderReusableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,10 @@
 		AA2EE6AA1BA0C3100068D910 /* InstaKiloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaKiloTests.m; sourceTree = "<group>"; };
 		AA2EE6B41BA0C6AE0068D910 /* Photos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photos.h; sourceTree = "<group>"; };
 		AA2EE6B51BA0C6AE0068D910 /* Photos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photos.m; sourceTree = "<group>"; };
+		AA2EE6B71BA0E4F60068D910 /* InstaKiloCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaKiloCell.h; sourceTree = "<group>"; };
+		AA2EE6B81BA0E4F60068D910 /* InstaKiloCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaKiloCell.m; sourceTree = "<group>"; };
+		AA2EE6BA1BA0F95F0068D910 /* SectionHeaderReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderReusableView.h; sourceTree = "<group>"; };
+		AA2EE6BB1BA0F95F0068D910 /* SectionHeaderReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderReusableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,10 @@
 				AA2EE6931BA0C3100068D910 /* AppDelegate.m */,
 				AA2EE6951BA0C3100068D910 /* ViewController.h */,
 				AA2EE6961BA0C3100068D910 /* ViewController.m */,
+				AA2EE6B71BA0E4F60068D910 /* InstaKiloCell.h */,
+				AA2EE6B81BA0E4F60068D910 /* InstaKiloCell.m */,
+				AA2EE6BA1BA0F95F0068D910 /* SectionHeaderReusableView.h */,
+				AA2EE6BB1BA0F95F0068D910 /* SectionHeaderReusableView.m */,
 				AA2EE6B41BA0C6AE0068D910 /* Photos.h */,
 				AA2EE6B51BA0C6AE0068D910 /* Photos.m */,
 				AA2EE6981BA0C3100068D910 /* Main.storyboard */,
@@ -225,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA2EE6B61BA0C6AE0068D910 /* Photos.m in Sources */,
+				AA2EE6B91BA0E4F60068D910 /* InstaKiloCell.m in Sources */,
+				AA2EE6BC1BA0F95F0068D910 /* SectionHeaderReusableView.m in Sources */,
 				AA2EE6971BA0C3100068D910 /* ViewController.m in Sources */,
 				AA2EE6941BA0C3100068D910 /* AppDelegate.m in Sources */,
 				AA2EE6911BA0C3100068D910 /* main.m in Sources */,

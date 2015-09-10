@@ -18,24 +18,58 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lrs-cx-DVM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oNy-AO-A1z">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <color key="backgroundColor" red="0.42219090067979792" green="0.42219090067979792" blue="0.42219090067979792" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="oNy-AO-A1z">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="instaKiloCell" id="ZOR-H5-c26">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="instaKiloCell" id="ZOR-H5-c26" customClass="InstaKiloCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5Z-hz-wKT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="P5Z-hz-wKT" secondAttribute="trailing" id="ZnW-k6-Z4v"/>
+                                            <constraint firstItem="P5Z-hz-wKT" firstAttribute="leading" secondItem="ZOR-H5-c26" secondAttribute="leading" id="aoc-Ag-PQE"/>
+                                            <constraint firstAttribute="bottom" secondItem="P5Z-hz-wKT" secondAttribute="bottom" id="fo3-6I-4Xs"/>
+                                            <constraint firstItem="P5Z-hz-wKT" firstAttribute="top" secondItem="ZOR-H5-c26" secondAttribute="top" id="ssN-2n-Xj7"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="P5Z-hz-wKT" id="iIf-9L-xn2"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerView" id="u2p-Bh-fP4" customClass="SectionHeaderReusableView">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQo-Wp-olB">
+                                            <rect key="frame" x="279" y="14" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="IQo-Wp-olB" secondAttribute="centerX" id="KRs-O1-6vN"/>
+                                        <constraint firstAttribute="centerY" secondItem="IQo-Wp-olB" secondAttribute="centerY" id="aVT-o7-5ni"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionLabel" destination="IQo-Wp-olB" id="h5Q-qz-BWR"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="1fi-We-Lre"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="NAK-3n-1Sb"/>
@@ -50,8 +84,15 @@
                             <constraint firstItem="Lrs-cx-DVM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="qHG-r8-Awq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TpW-3O-cBM"/>
+                    <navigationItem key="navigationItem" id="TpW-3O-cBM">
+                        <barButtonItem key="rightBarButtonItem" title="Location" id="ZmZ-0V-Ms6">
+                            <connections>
+                                <action selector="organizeByLocation:" destination="vXZ-lx-hvc" id="iUL-Wk-HAO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="organizationBarButton" destination="ZmZ-0V-Ms6" id="wQ6-Gd-9g2"/>
                         <outlet property="photoCollection" destination="Lrs-cx-DVM" id="hCL-0N-eys"/>
                     </connections>
                 </viewController>

@@ -8,12 +8,16 @@
 
 #import "ViewController.h"
 #import "Photos.h"
+#import "InstaKiloCell.h"
+#import "SectionHeaderReusableView.h"
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic) NSDictionary *photosBySubject;
 @property(nonatomic) NSDictionary *photosByLocation;
 @property (strong, nonatomic) IBOutlet UICollectionView *photoCollection;
+@property (nonatomic) BOOL sortBySubject;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *organizationBarButton;
 
 @end
 
@@ -47,7 +51,7 @@
                               @"Medicine Hat":@[condoCDs],
                               @"Amsterdam":@[indieStat]};
     
-    [self.photoCollection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"instaKiloCell"];
+    self.sortBySubject = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +60,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    if (view == subject) {
+    if (self.sortBySubject) {
         NSString *subject = [[self.photosBySubject allKeys] objectAtIndex:section];
         NSArray *subjectPhotos = [self.photosBySubject objectForKey:subject];
         return subjectPhotos.count;
@@ -66,11 +70,10 @@
         NSArray *locationPhotos = [self.photosByLocation objectForKey:location];
         return locationPhotos.count;
     }
-
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    if (collectionView == subject) {
+    if (self.sortBySubject) {
         NSArray *subjects = [self.photosBySubject allKeys];
         return subjects.count;
     }
@@ -78,13 +81,57 @@
         NSArray *locations = [self.photosByLocation allKeys];
         return locations.count;
     }
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"instaKiloCell " forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor purpleColor];
+    InstaKiloCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"instaKiloCell" forIndexPath:indexPath];
+    
+    if (self.sortBySubject) {
+        NSArray *subjects = [self.photosBySubject allKeys];
+        NSString *subject = [subjects objectAtIndex: indexPath.section];
+        NSArray *subjectPhotos = [self.photosBySubject objectForKey:subject];
+        Photos *currentPhoto = [subjectPhotos objectAtIndex:indexPath.row];
+        cell.photoImageView.image = currentPhoto.photo;
+    }
+    else {
+        NSArray *locations = [self.photosByLocation allKeys];
+        NSString *location = [locations objectAtIndex: indexPath.section];
+        NSArray *locationPhotos = [self.photosByLocation objectForKey:location];
+        Photos *currentPhoto = [locationPhotos objectAtIndex:indexPath.row];
+        cell.photoImageView.image = currentPhoto.photo;
+    }
     return cell;
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        SectionHeaderReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerView" forIndexPath:indexPath];
+        
+        if (self.sortBySubject) {
+            NSArray *subjects = [self.photosBySubject allKeys];
+            NSString *subject = [subjects objectAtIndex: indexPath.section];
+            headerView.sectionLabel.text = [NSString stringWithFormat:@"%@", subject];
+        }
+        else {
+            NSArray *locations = [self.photosByLocation allKeys];
+            NSString *location = [locations objectAtIndex: indexPath.section];
+            headerView.sectionLabel.text = [NSString stringWithFormat:@"%@", location];
+        }
+        return headerView;
+    }
+    return nil;
+}
+- (IBAction)organizeByLocation:(UIBarButtonItem *)sender {
+    if (self.sortBySubject) {
+        self.sortBySubject = NO;
+        self.organizationBarButton.title = @"Subject";
+    }
+    else {
+        self.sortBySubject = YES;
+        self.organizationBarButton.title = @"Location";
+    }
+    [self.photoCollection reloadData];
 }
 
 @end
