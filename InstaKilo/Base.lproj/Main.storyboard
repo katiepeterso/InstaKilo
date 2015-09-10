@@ -85,14 +85,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TpW-3O-cBM">
-                        <barButtonItem key="rightBarButtonItem" title="Location" id="ZmZ-0V-Ms6">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fXL-sz-Kzj">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Subject"/>
+                                <segment title="Location"/>
+                            </segments>
                             <connections>
-                                <action selector="organizeByLocation:" destination="vXZ-lx-hvc" id="iUL-Wk-HAO"/>
+                                <action selector="sortSelection:" destination="vXZ-lx-hvc" eventType="valueChanged" id="odG-wm-xW6"/>
                             </connections>
-                        </barButtonItem>
+                        </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="organizationBarButton" destination="ZmZ-0V-Ms6" id="wQ6-Gd-9g2"/>
                         <outlet property="photoCollection" destination="Lrs-cx-DVM" id="hCL-0N-eys"/>
                     </connections>
                 </viewController>

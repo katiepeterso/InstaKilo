@@ -17,7 +17,6 @@
 @property(nonatomic) NSDictionary *photosByLocation;
 @property (strong, nonatomic) IBOutlet UICollectionView *photoCollection;
 @property (nonatomic) BOOL sortBySubject;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *organizationBarButton;
 
 @end
 
@@ -122,14 +121,13 @@
     }
     return nil;
 }
-- (IBAction)organizeByLocation:(UIBarButtonItem *)sender {
-    if (self.sortBySubject) {
-        self.sortBySubject = NO;
-        self.organizationBarButton.title = @"Subject";
+
+- (IBAction)sortSelection:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        self.sortBySubject = YES;
     }
     else {
-        self.sortBySubject = YES;
-        self.organizationBarButton.title = @"Location";
+        self.sortBySubject = NO;
     }
     [self.photoCollection reloadData];
 }
